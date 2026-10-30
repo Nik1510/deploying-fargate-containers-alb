@@ -1,0 +1,36 @@
+{
+  "serviceName": "fargate-express-service",
+  "cluster": "fargate-cluster",
+  "taskDefinition": "fargate-express-task",
+  "desiredCount": 3,
+  "launchType": "FARGATE",
+  "platformVersion": "LATEST",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": [
+        "<SUBNET_ID_1>",
+        "<SUBNET_ID_2>"
+      ],
+      "securityGroups": [
+        "<FARGATE_SECURITY_GROUP_ID>"
+      ],
+      "assignPublicIp": "ENABLED"
+    }
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "<TARGET_GROUP_ARN>",
+      "containerName": "express-app",
+      "containerPort": 3000
+    }
+  ],
+  "healthCheckGracePeriodSeconds": 60,
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100,
+    "deploymentCircuitBreaker": {
+      "enable": true,
+      "rollback": true
+    }
+  }
+}
