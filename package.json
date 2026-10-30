@@ -1,0 +1,17 @@
+{
+  "name": "fargate-express-app",
+  "version": "1.0.0",
+  "description": "Production-ready Express app for AWS Fargate deployment behind ALB",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "prom-client": "^15.1.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
